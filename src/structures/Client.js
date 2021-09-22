@@ -3,8 +3,6 @@ const { Client } = require('discord.js')
 const { readdirSync } = require('fs')
 const { join } = require('path')
 
-const config = require('../../config.json')
-
 const { connect } = require('mongoose')
 const Models = require('../database/models/Models')
 
@@ -19,7 +17,7 @@ module.exports = class extends Client {
 
     registryCommands() {
         // temporária
-        this.guilds.cache.get('644597677417299989').commands.set(this.commands) // 644597677417299989
+        this.guilds.cache.get('836291214847901796').commands.set(this.commands) // 836291214847901796
         //this.application.commands.set(this.commands)
     }
 
@@ -54,7 +52,7 @@ module.exports = class extends Client {
     }
 
     async connectToDatabase() {
-        const connection = await connect(config.MONGO_URL, {
+        const connection = await connect(process.env.MONGO_URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         })

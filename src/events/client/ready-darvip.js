@@ -11,18 +11,16 @@ module.exports = class extends Event {
 
     run = async () => {
 
-      const config = require('../../../config.json')
-      const setvipTimeSchema = require('../../database/models/setvip-time-schema')
-
-      const index = require('../../../index')
-      const client = index.client
+      const setvipTimeSchema = require('../../database/models/setvip-schema')
+      
+      const client = this.client
 
       setInterval(async () => {
     
         try {
         
             
-            let guild = client.guilds.cache.get(config.servidores.servidor)
+            let guild = client.guilds.cache.get('836291214847901796') //791491164729638913
 
             const setvipTimeData = await setvipTimeSchema.findOne({ serverID: guild.id })
 

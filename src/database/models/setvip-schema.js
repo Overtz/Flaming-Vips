@@ -6,4 +6,4 @@ const setvipTimeSchema = new Schema({
     time: { type: String, require: true }
 })
 
-module.exports = model('setvip-time', setvipTimeSchema)
+module.exports = model('vips-data', setvipTimeSchema)
