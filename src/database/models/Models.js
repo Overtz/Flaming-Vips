@@ -1,4 +1,4 @@
 module.exports = {
-    serverConfig: require('./config-schema'),
-    setvipTime: require('./setvip-schema')
+    vipConfigSchema: require('./vip-config-schema'),
+    setvipSchema: require('./setvip-schema')
 }

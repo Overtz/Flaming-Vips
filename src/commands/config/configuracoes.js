@@ -1,6 +1,6 @@
 const Command = require('../../structures/Command')
 
-const configSchema = require('../../database/models/config-schema')
+const configSchema = require('../../database/models/vip-config-schema')
 
 const { MessageEmbed } = require('discord.js')
 

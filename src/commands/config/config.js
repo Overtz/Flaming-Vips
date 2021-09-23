@@ -8,18 +8,18 @@ module.exports = class extends Command {
             options: [
                 {
                     type: 'SUB_COMMAND_GROUP',
-                    name: 'welcome',
-                    description: 'Configuração do sistema de boas-vindas.',
+                    name: 'vip_log',
+                    description: 'Configuração do sistema de logs.',
                     options: [
                         {
                             type: 'SUB_COMMAND',
-                            name: 'canal_entrada',
-                            description: 'Configurar o canal onde a mensagem de boas-vindas será enviada.',
+                            name: 'canal_vip_log',
+                            description: 'Configurar o canal onde vips entregues serão enviados.',
                             options: [
                                 {
                                     type: 'CHANNEL',
                                     name: 'canal',
-                                    description: 'Canal de texto onde a mensagem será enviada.',
+                                    description: 'Canal de texto onde as mensagens serão enviadas.',
                                     required: true
                                 }
                             ]
@@ -28,58 +28,18 @@ module.exports = class extends Command {
                 },
                 {
                     type: 'SUB_COMMAND_GROUP',
-                    name: 'ticket',
-                    description: 'Configuração do sistema de tickets.',
+                    name: 'vip_announce',
+                    description: 'Configuração do sistema de anúncio de vip\'s',
                     options: [
                         {
                             type: 'SUB_COMMAND',
-                            name: 'mensagem',
-                            description: 'Mensagem onde o usuário irá clicar para abrir o ticket.',
+                            name: 'canal_vip_announce',
+                            description: 'Configurar o canal onde anúncios de vips entregues serão enviados.',
                             options: [
                                 {
                                     type: 'CHANNEL',
                                     name: 'canal',
-                                    description: 'Canal de texto onde a mensagem será enviada.',
-                                    required: true
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    type: 'SUB_COMMAND_GROUP',
-                    name: 'captcha',
-                    description: 'Configuração do sistema de captcha.',
-                    options: [
-                        {
-                            type: 'SUB_COMMAND',
-                            name: 'mensagem',
-                            description: 'Mensagem onde será o captcha.',
-                            options: [
-                                {
-                                    type: 'CHANNEL',
-                                    name: 'canal',
-                                    description: 'Canal de texto onde a mensagem será enviada.',
-                                    required: true
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    type: 'SUB_COMMAND_GROUP',
-                    name: 'logs',
-                    description: 'Configuração do sistema de captcha.',
-                    options: [
-                        {
-                            type: 'SUB_COMMAND',
-                            name: 'canal',
-                            description: 'Canal onde serão enviados as logs.',
-                            options: [
-                                {
-                                    type: 'CHANNEL',
-                                    name: 'log_channel',
-                                    description: 'Canal de texto onde as logs serão enviada.',
+                                    description: 'Canal de texto onde as mensagens serão enviadas.',
                                     required: true
                                 }
                             ]
