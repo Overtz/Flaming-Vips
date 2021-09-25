@@ -6,7 +6,7 @@ const ms = require('ms')
 module.exports = class extends Command {
     constructor(client) {
         super(client, {
-            name: 'remvip',
+            name: 'editvip',
             description: 'Faça eu falar algo por você em embed.',
             options: [
               {
