@@ -22,6 +22,12 @@ module.exports = class extends Command {
           required: true
         },
         {
+          name: 'canal',
+          type: 'CHANNEL',
+          description: 'Canal do vip.',
+          required: true
+        },
+        {
           name: 'tempo',
           type: 'STRING',
           description: 'Tempo que o membro ficará com o vip.',
@@ -44,12 +50,15 @@ module.exports = class extends Command {
     const user = interaction.options.getMember('usuário');
     const role = interaction.options.getRole('cargo');
     const tempo = interaction.options.getString('tempo');
+    const channel = interaction.options.getChannel('canal');
 
     try {
 
       if (!user) return interaction.reply({ content: `${errado} | Mencione um usuário para executar este comando!`, ephemeral: true });
       if (!role) return interaction.reply({ content: `${errado} | Mencione um cargo para executar este comando!`, ephemeral: true });
       if (!tempo) return interaction.reply({ content: `${errado} | Escreva um tempo para executar este comando!`, ephemeral: true });
+      if (!channel) return interaction.reply({ content: `${errado} | Mencione um canal para executar este comando!`, ephemeral: true });
+      if (!channel.type == 'GUILD_TEXT') return interaction.reply({ content: `${errado} | Mencione um canal de texto para executar este comando!`, ephemeral: true });
 
       if (interaction.guild.me.roles.highest.position < role.position) return interaction.reply({ content: `${errado} | Minha permissão é baixa do que a deste cargo.`, ephemeral: true })
 
@@ -81,6 +90,7 @@ module.exports = class extends Command {
           setUser: interaction.member.id,
           serverID: interaction.guild.id,
           roleID: role.id,
+          channelID: channel.id,
           time: Date.now() + time
         })
       }
@@ -102,6 +112,8 @@ module.exports = class extends Command {
         .setColor('RANDOM')
         .setThumbnail(user.user.displayAvatarURL())
         .addField('Usuário que recebeu:', `<@${user.id}> | ${user.id}`)
+        .addField('Cargo', `<@&${role.id}> | ${role.id}`)
+        .addField('Canal', `<#${channel.id}> | ${channel.id}`)
         .addField('Quem setou:', `<@${interaction.member.id}> | ${interaction.member.id}`)
         .addField('Tempo:', `${tempo}`)
 

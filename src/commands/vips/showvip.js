@@ -37,6 +37,9 @@ module.exports = class extends Command {
       const role = interaction.guild.roles.cache.get(setvipData.roleID)
       if (!role) return interaction.reply({ content: `${errado} | O Cargo vinculado ao vip, é inválido.`, ephemeral: true })
 
+      const channel = interaction.guild.channels.cache.get(setvipData.channelID)
+      if (!channel) return interaction.reply({ content: `${errado} | O canal vinculado ao vip, é inválido.`, ephemeral: true })
+
       const time = setvipData.time
       if (!time) return interaction.reply({ content: `${errado} | Algo deu errado.`, ephemeral: true })
       var tempo;
@@ -54,6 +57,7 @@ module.exports = class extends Command {
       .setAuthor(`Vip de ${user.user.tag}`, user.user.displayAvatarURL({ dynamic: true }))
       .setColor(role.displayHexColor)
       .addField(`Cargo vinculado`, `<@&${role.id}> | ${role.id}`)
+      .addField(`Canal vinculado`, `<#${channel.id}> | ${channel.id}`)
       .addField(`Duração`, `${tempo}`)
       .addField(`Quem setou`, `<@${setvipData.setUser}> | ${setvipData.setUser}`)
 

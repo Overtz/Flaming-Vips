@@ -5,6 +5,7 @@ const setvipSchema = new Schema({
     setUser: { type: String, require: true, unique: false },
     serverID: { type: String, require: true, unique: false },
     roleID: { type: String, require: true, unique: false },
+    channelID: { type: String, require: true, unique: true },
     time: { type: String, require: true }
 })
 
