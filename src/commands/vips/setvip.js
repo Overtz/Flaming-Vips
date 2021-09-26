@@ -133,13 +133,12 @@ module.exports = class extends Command {
         .setFooter('Duração do vip: ', time)
 
       if (vipConfigData.vipLogChannel == 'none') return;
-      if (vipConfigData.vipAnnounceamentChannel == 'none') return;
-
       const log = interaction.guild.channels.cache.get(vipConfigData.vipLogChannel)
-      const announceament = interaction.guild.channels.cache.get(vipConfigData.vipAnnounceamentChannel)
-
       if (!log) return;
       await log.send({ embeds: [embedLog] })
+
+      if (vipConfigData.vipAnnounceamentChannel == 'none') return;
+      const announceament = interaction.guild.channels.cache.get(vipConfigData.vipAnnounceamentChannel)
       if (!announceament) return;
       announceament.send({ embeds: [announce] })
 
