@@ -84,6 +84,14 @@ module.exports = class extends Command {
 
       if (time == 'perm') {
         time = 'Permanente.'
+        await setvipSchema.create({
+          userID: user.id,
+          setUser: interaction.member.id,
+          serverID: interaction.guild.id,
+          roleID: role.id,
+          channelID: channel.id,
+          time: time
+        })
       } else {
         await setvipSchema.create({
           userID: user.id,
@@ -115,14 +123,14 @@ module.exports = class extends Command {
         .addField('Cargo', `<@&${role.id}> | ${role.id}`)
         .addField('Canal', `<#${channel.id}> | ${channel.id}`)
         .addField('Quem setou:', `<@${interaction.member.id}> | ${interaction.member.id}`)
-        .addField('Tempo:', `${tempo}`)
+        .addField('Tempo:', `${time}`)
 
       const announce = new MessageEmbed()
         .setTitle(rand + 'Vip Anúnciamentos')
         .setColor('RANDOM')
         .setThumbnail(user.user.displayAvatarURL())
         .setDescription(`Parabéns ${user}, você recebeu um vip! Quem lhê deu: ${interaction.member}`)
-        .setFooter('Duração do vip: ', tempo)
+        .setFooter('Duração do vip: ', time)
 
       if (vipConfigData.vipLogChannel == 'none') return;
       if (vipConfigData.vipAnnounceamentChannel == 'none') return;
@@ -136,7 +144,7 @@ module.exports = class extends Command {
       if (vipConfigData.vipAnnounceamentChannel == 'none') {
         return;
       } else {
-        announceament.reply({ embeds: [announce] })
+        announceament.send({ embeds: [announce] })
       }
 
     } catch (error) {
