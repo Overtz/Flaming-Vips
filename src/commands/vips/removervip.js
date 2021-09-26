@@ -68,8 +68,8 @@ module.exports = class extends Command {
                   .setTitle('VIP LOG')
                   .setColor('RANDOM')
                   .setThumbnail(user.user.displayAvatarURL())
-                  .addField('Usuário que recebeu:', `${user}`)
-                  .addField('Quem setou:', `<@${interaction.member.id}> | ${interaction.member.id}`)
+                  .addField('Usuário:', `${user}`)
+                  .addField('Quem removeu:', `<@${interaction.member.id}> | ${interaction.member.id}`)
                   .addField('Motivo da Remoção:', `${reason}`)
 
                   if (vipConfigData.vipLogChannel == 'none') return;

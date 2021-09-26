@@ -58,7 +58,7 @@ module.exports = class extends Command {
       if (!role) return interaction.reply({ content: `${errado} | Mencione um cargo para executar este comando!`, ephemeral: true });
       if (!tempo) return interaction.reply({ content: `${errado} | Escreva um tempo para executar este comando!`, ephemeral: true });
       if (!channel) return interaction.reply({ content: `${errado} | Mencione um canal para executar este comando!`, ephemeral: true });
-      if (!channel.type == 'GUILD_TEXT') return interaction.reply({ content: `${errado} | Mencione um canal de texto para executar este comando!`, ephemeral: true });
+      if (!channel.type == 'GUILD_VOICE') return interaction.reply({ content: `${errado} | Mencione um canal de voz para executar este comando!`, ephemeral: true });
 
       if (interaction.guild.me.roles.highest.position < role.position) return interaction.reply({ content: `${errado} | Minha permissão é baixa do que a deste cargo.`, ephemeral: true })
 
@@ -74,7 +74,7 @@ module.exports = class extends Command {
         time = ms(tempo);
       }
 
-      if (!time) return interaction.reply({ content: `${errado} | Tempo está inválido! \n*Exemplo: /setvip [usuário] [cargo] 1d (Duração do vip será 1 dia)*`, ephemeral: true })
+      if (!time) return interaction.reply({ content: `${errado} | Tempo está inválido! \n*Exemplo: /setvip [usuário] [cargo] [canal] 1d (Duração do vip será 1 dia)*`, ephemeral: true })
 
       var cargo = interaction.guild.roles.cache.get(role.id)
 
@@ -140,7 +140,7 @@ module.exports = class extends Command {
       }
 
     } catch (error) {
-      console.log('erro SetarVip.js ', error)
+      console.log('erro setvip.js ', error)
     }
   }
 }
