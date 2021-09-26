@@ -139,13 +139,9 @@ module.exports = class extends Command {
       const announceament = interaction.guild.channels.cache.get(vipConfigData.vipAnnounceamentChannel)
 
       if (!log) return;
-      if (!announceament) return;
       await log.send({ embeds: [embedLog] })
-      if (vipConfigData.vipAnnounceamentChannel == 'none') {
-        return;
-      } else {
-        announceament.send({ embeds: [announce] })
-      }
+      if (!announceament) return;
+      announceament.send({ embeds: [announce] })
 
     } catch (error) {
       console.log('erro setvip.js ', error)
