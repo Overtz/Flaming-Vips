@@ -50,12 +50,9 @@ module.exports = class extends Command {
         tempo = ms(Math.floor(time - Date.now()), { long: true })
       }
 
-      console.log(tempo)
-      console.log(time)
-
       const embed = new MessageEmbed()
       .setAuthor(`Vip de ${user.user.tag}`, user.user.displayAvatarURL({ dynamic: true }))
-      .setColor(role.displayHexColor)
+      .setColor(role.hexColor)
       .addField(`Cargo vinculado`, `<@&${role.id}> | ${role.id}`)
       .addField(`Canal vinculado`, `<#${channel.id}> | ${channel.id}`)
       .addField(`Duração`, `${tempo}`)
